@@ -1,23 +1,26 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "builds": [
     {
-      "src": "ceo/backend/server.py",
+      "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "50mb",
-        "runtime": "python3.11"
+        "maxLambdaSize": "50mb"
       }
     }
   ],
+  "functions": {
+    "api/index.py": {
+      "excludeFiles": "{ceo/frontend/**,ceo/store-backend/**,ceo/backend/tests/**,ceo/backend/scripts/**,ceo/backend/logs/**,tests/**,test_reports/**,exports/**,memory/**,**/__pycache__/**,**/*.pyc,*.md,*.txt,DEPLOY*.py,LAUNCH*.py}"
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "ceo/backend/server.py"
+      "dest": "api/index.py"
     }
   ],
   "env": {
-    "PYTHONUNBUFFERED": "1",
-    "PORT": "8000"
-  },
-  "buildCommand": "pip install -r ceo/backend/requirements-minimal.txt"
+    "PYTHONUNBUFFERED": "1"
+  }
 }
