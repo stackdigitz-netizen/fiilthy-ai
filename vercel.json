@@ -9,11 +9,6 @@
       }
     }
   ],
-  "functions": {
-    "api/index.py": {
-      "excludeFiles": "{ceo/frontend/**,ceo/store-backend/**,ceo/backend/tests/**,ceo/backend/scripts/**,ceo/backend/logs/**,tests/**,test_reports/**,exports/**,memory/**,**/__pycache__/**,**/*.pyc,*.md,*.txt,DEPLOY*.py,LAUNCH*.py}"
-    }
-  },
   "routes": [
     {
       "src": "/(.*)",
